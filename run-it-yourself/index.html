@@ -3,10 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cold War Simulator</title>
+<title>Cold War Simulator: run it 1,000,000 times yourself · RealityMargin</title>
 <meta name="description" content="Run the Cold War 1,000,000 times yourself. Change the odds of any crisis and see how many worlds survive. The exact model from the RealityMargin video.">
 <meta property="og:title" content="The Cold War, 1,000,000 times: run it yourself">
 <meta property="og:description" content="The exact simulation from the video. Change any odd, run a million Cold Wars, share your result.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://realitymargin.github.io/cold-war-sim/run-it-yourself/">
+<meta property="og:image" content="https://realitymargin.github.io/cold-war-sim/run-it-yourself/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Cold War, 1,000,000 times: 699,712 worlds survive. Run it yourself.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050a07">
+<link rel="canonical" href="https://realitymargin.github.io/cold-war-sim/run-it-yourself/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23050a07'/%3E%3Cpath d='M6 22h20M10 22V12M16 22V7M22 22v-6' stroke='%238dffb0' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="site.css">
 </head>
@@ -20,6 +28,7 @@
       <a class="navbtn" href="odds.html">Odds table</a>
       <a class="navbtn" href="sources.html">Sources</a>
       <a class="navbtn" href="code.html">The code</a>
+      <a class="navbtn yt" href="https://www.youtube.com/@realitymargin" target="_blank" rel="noopener">▶ YouTube</a>
     </nav>
   </div>
 </header>
@@ -33,6 +42,7 @@
       <button class="btn primary big" id="heroRun">▶ Run the video's million</button>
       <a class="btn" href="#how">How it works</a>
       <a class="btn" href="odds.html">See every odd</a>
+      <a class="btn" href="https://www.youtube.com/@realitymargin" target="_blank" rel="noopener">▶ Watch the video</a>
     </div>
   </section>
 
@@ -59,8 +69,8 @@
     <h2>The big six <span class="hint">the forks that matter most</span></h2>
     <div class="card grid" id="sliders"></div>
 
-    <h2>Run</h2>
-    <div class="card">
+    <h2 id="run-h">Run</h2>
+    <div class="card" id="runcard">
       <div class="controls">
         <label>Odds column<select id="col"><option value="0">Safe: danger exaggerated</option><option value="1" selected>Middle: the video</option><option value="2">Dangerous: we got very lucky</option></select></label>
         <label>Secret incidents<select id="alarms"><option value="1" selected>As known (× 1)</option><option value="2">Every alarm and accident × 2</option></select></label>
@@ -72,10 +82,11 @@
         <button class="btn" id="reset">↺ Reset to the video</button>
         <button class="btn" id="share">🔗 Copy link</button>
       </div>
-      <p class="status" id="status">Ready. Settings: the video.</p>
-      <p class="countline"><span class="counter" id="count">0</span> <span class="muted" id="countOf">/ 1,000,000 worlds</span></p>
+      <p class="status" id="status" aria-live="polite">Ready. Settings: the video.</p>
+      <p class="countline"><span class="counter" id="count">0</span> <span class="muted" id="countOf">/ 1,000,000 worlds simulated</span></p>
       <div class="bar"><i id="bar"></i></div>
       <div class="stack" id="stack"></div>
+      <div class="headline" id="headline" aria-live="polite"><span class="muted">Press ▶ RUN, or click an experiment above.</span></div>
       <div class="res" id="res"></div>
       <div id="where"></div>
     </div>
@@ -103,7 +114,7 @@
     </div>
   </section>
 </main>
-<footer class="foot"><div class="wrap">RealityMargin · “I Simulated the Cold War 1,000,000 Times” · <a href="odds.html">Odds table</a> · <a href="sources.html">Sources</a> · <a href="code.html">The code</a></div></footer>
+<footer class="foot"><div class="wrap">RealityMargin · “I Simulated the Cold War 1,000,000 Times” · <a href="https://www.youtube.com/@realitymargin" target="_blank" rel="noopener">The video on YouTube</a> · <a href="odds.html">Odds table</a> · <a href="sources.html">Sources</a> · <a href="code.html">The code</a></div></footer>
 <div id="toast" role="status"></div>
 
 <!-- the model (sim_web.js = sim.js with its export keywords removed, built by tools/build_page.mjs) and the page: plain scripts, so it also runs when opened straight from the disk -->

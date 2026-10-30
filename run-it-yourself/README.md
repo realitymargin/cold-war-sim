@@ -17,11 +17,12 @@ Change the odds of any crisis, run a million Cold Wars, and share your scenario 
 | `odds.html` | Every odd in all three columns, and how many worlds each fork ends |
 | `sources.html` | Why each odd is what it is, with sources, and how the model changed from version 1 to 4 |
 | `code.html` | The model's code, readable, with a download button |
+| `og.png` | The picture shown when the link is posted (YouTube, Discord, WhatsApp, X) |
 | `.nojekyll` | Tells GitHub to serve every file exactly as it is. **Upload it too** (see step 3) |
 
 The page also works when you just double-click `index.html` on your computer, so you can try it before uploading.
 
-With nothing changed, the page reproduces the video exactly: 699,712 worlds survive, 228,235 end in nuclear war. The video's experiments reproduce too: Petrov reports it → 687,236; every alarm × 2 → 657,448; the slider test → 602,899. All of this is checked automatically before release.
+With nothing changed, the page reproduces the video exactly: 699,712 worlds survive, 228,235 end in nuclear war. Every experiment the video runs has its own card and reproduces too: Berlin becomes a war → 48,977; Kennedy strikes Cuba → 486,499; B-59 fires its torpedo → 243,701; Petrov reports it → 687,236; every alarm × 2 → 657,448; the slider test → 602,899; danger exaggerated → 94%; we got very lucky → 19%. All of this is checked automatically before release.
 
 The page sends nothing anywhere. A shared link only carries the settings (for example `#c=1&a=1&e=petrov.pass:1`).
 

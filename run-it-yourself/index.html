@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cold War Simulator</title>
+<meta name="description" content="Run the Cold War 1,000,000 times yourself. Change the odds of any crisis and see how many worlds survive. The exact model from the RealityMargin video.">
+<meta property="og:title" content="The Cold War, 1,000,000 times: run it yourself">
+<meta property="og:description" content="The exact simulation from the video. Change any odd, run a million Cold Wars, share your result.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23050a07'/%3E%3Cpath d='M6 22h20M10 22V12M16 22V7M22 22v-6' stroke='%238dffb0' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="index.html"><span class="dot"></span>COLDWAR.SIM</a>
+    <nav>
+      <a class="navbtn on" href="index.html">Simulator</a>
+      <a class="navbtn" href="#experiments">Experiments</a>
+      <a class="navbtn" href="odds.html">Odds table</a>
+      <a class="navbtn" href="sources.html">Sources</a>
+      <a class="navbtn" href="code.html">The code</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="kicker">REALITYMARGIN · RUN IT YOURSELF</p>
+    <h1>The Cold War, 1,000,000 times</h1>
+    <p class="lead">The exact simulation from the video, running in your browser. Change any odd you think is wrong, run your own million Cold Wars, and share what survives.</p>
+    <div class="row">
+      <button class="btn primary big" id="heroRun">▶ Run the video's million</button>
+      <a class="btn" href="#how">How it works</a>
+      <a class="btn" href="odds.html">See every odd</a>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How to use it</h2>
+    <ol class="steps">
+      <li><b>Run it.</b> Press <span class="tag">▶ RUN</span>. With nothing changed you get the video's exact result: <b>699,712</b> worlds survive.</li>
+      <li><b>Try an experiment.</b> Click any card under <i>Experiments</i>. It sets the odds and runs straight away.</li>
+      <li><b>Change the odds.</b> Drag a slider, or open <i>All 51 forks</i> and type any odd. Then press <span class="tag">▶ RUN</span>.</li>
+      <li><b>Share it.</b> <span class="tag">Copy link</span> puts your exact settings in a link. Anyone who opens it can run the same scenario.</li>
+    </ol>
+    <div class="card">
+      <p>Every simulated Cold War runs from July 1945 to December 1991 through the same <b>51 real crises, false alarms and accidents</b>. At each one the computer rolls a die against an odd. Most rolls go the way history went; some don't. Before 1955, when the Soviet Union had under 200 warheads, a war between the superpowers counts as a one-sided <i>atomic war</i> rather than World War III.</p>
+      <p class="muted">Every world has its own fixed dice (seed 19450716), so a run is repeatable: the same settings always give the same numbers, on any computer.</p>
+    </div>
+  </section>
+
+  <section id="experiments">
+    <h2>Experiments <span class="hint">click one: it loads and runs</span></h2>
+    <div class="cards" id="presets"></div>
+  </section>
+
+  <section id="sim">
+    <h2>The big six <span class="hint">the forks that matter most</span></h2>
+    <div class="card grid" id="sliders"></div>
+
+    <h2>Run</h2>
+    <div class="card">
+      <div class="controls">
+        <label>Odds column<select id="col"><option value="0">Safe: danger exaggerated</option><option value="1" selected>Middle: the video</option><option value="2">Dangerous: we got very lucky</option></select></label>
+        <label>Secret incidents<select id="alarms"><option value="1" selected>As known (× 1)</option><option value="2">Every alarm and accident × 2</option></select></label>
+        <label>Worlds<select id="nw"><option value="1000000" selected>1,000,000 (as in the video)</option><option value="100000">100,000 (quick)</option></select></label>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn primary big" id="run">▶ RUN</button>
+        <button class="btn" id="stop" disabled>■ Stop</button>
+        <button class="btn" id="reset">↺ Reset to the video</button>
+        <button class="btn" id="share">🔗 Copy link</button>
+      </div>
+      <p class="status" id="status">Ready. Settings: the video.</p>
+      <p class="countline"><span class="counter" id="count">0</span> <span class="muted" id="countOf">/ 1,000,000 worlds</span></p>
+      <div class="bar"><i id="bar"></i></div>
+      <div class="stack" id="stack"></div>
+      <div class="res" id="res"></div>
+      <div id="where"></div>
+    </div>
+  </section>
+
+  <section id="forks">
+    <h2>All 51 forks <span class="hint">edit any first-step odd</span></h2>
+    <div class="card">
+      <div class="row"><input type="search" id="filter" placeholder="Search: Cuba, Petrov, 1962…" aria-label="Search the forks"><button class="btn" id="toggleForks">Show all 51</button><a class="btn" href="odds.html">Full odds table</a></div>
+      <p class="muted" style="margin-top:10px">The odd is the chance the crisis takes its first dangerous step in the column you picked: war, a nuclear weapon used, a launch on a false alarm… Later steps keep the model's odds; the full odds table shows every step.</p>
+      <div class="tablewrap" id="forkWrap" hidden><table id="forkTable"><thead><tr><th>Year</th><th>Fork</th><th>Step</th><th>Odd (%)</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details open><summary>Is this really the model from the video?</summary><p>Yes. <a href="code.html">The code</a> is the video's model (version 4, locked 30 October 2026) line for line; only the part that writes result files on a computer is left out. With nothing changed, this page gives the video's numbers exactly.</p></details>
+      <details><summary>Where do the odds come from?</summary><p>They are judgements, written down openly, built from what historians have found in the archives. No source gives these exact numbers. Every fork has its reasons and sources on <a href="sources.html">the sources page</a>; every odd, in all three columns, is in <a href="odds.html">the odds table</a>.</p></details>
+      <details><summary>What do the three columns mean?</summary><p><b>Safe</b> follows historians who think the danger was exaggerated (Tertrais, 2017). <b>Middle</b> is the video. <b>Dangerous</b> follows those who think we got very lucky (Chatham House, 2014; Lundgren, 2013).</p></details>
+      <details><summary>What does “secret incidents × 2” do?</summary><p>Most known false alarms and accidents come from declassified American files; the Soviet ones are mostly still sealed. This doubles the chance of every false alarm and accident going wrong, as if there were twice as many we don't know about.</p></details>
+      <details><summary>Why does changing one odd change other forks' numbers?</summary><p>A world that ends early never reaches the later crises. Make 1948 more dangerous and fewer worlds are left to end in 1962.</p></details>
+      <details><summary>What counts as “survived”?</summary><p>Reaching 26 December 1991, the end of the Soviet Union, without a war between the superpowers. A world can survive even if a nuclear weapon was used in a smaller war; the results show how many stayed completely quiet, like ours.</p></details>
+      <details><summary>Does it send my settings anywhere?</summary><p>No. Everything runs in your browser. A shared link only carries the settings themselves.</p></details>
+    </div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap">RealityMargin · “I Simulated the Cold War 1,000,000 Times” · <a href="odds.html">Odds table</a> · <a href="sources.html">Sources</a> · <a href="code.html">The code</a></div></footer>
+<div id="toast" role="status"></div>
+
+<!-- the model (sim_web.js = sim.js with its export keywords removed, built by tools/build_page.mjs) and the page: plain scripts, so it also runs when opened straight from the disk -->
+<script src="sim_web.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

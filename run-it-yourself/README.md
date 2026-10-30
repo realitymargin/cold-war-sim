@@ -24,7 +24,7 @@ The page also works when you just double-click `index.html` on your computer, so
 
 With nothing changed, the page reproduces the video exactly: 699,712 worlds survive, 228,235 end in nuclear war. Every experiment the video runs has its own card and reproduces too: Berlin becomes a war → 48,977; Kennedy strikes Cuba → 486,499; B-59 fires its torpedo → 243,701; Petrov reports it → 687,236; every alarm × 2 → 657,448; the slider test → 602,899; danger exaggerated → 94%; we got very lucky → 19%. All of this is checked automatically before release.
 
-The page sends nothing anywhere. A shared link only carries the settings (for example `#c=1&a=1&e=petrov.pass:1`).
+The page sends no settings or results anywhere. It counts visits and RUN presses with GoatCounter (no cookies, no personal data): see them at https://realitymargin.goatcounter.com. A shared link only carries the settings (for example `#c=1&a=1&e=petrov.pass:1`).
 
 ---
 

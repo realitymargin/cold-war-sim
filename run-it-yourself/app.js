@@ -49,6 +49,7 @@
       for (; i < end; i++) { const r = coldWar(c, rng(warSeed(seed, i)), {}, { alarms }); out[r.outcome] = (out[r.outcome] || 0) + 1; if (r.at) endedAt[r.at] = (endedAt[r.at] || 0) + 1; if (r.outcome === 'SURVIVED' && !r.limited) quiet++; }
       $('count').textContent = fmt(i); $('bar').style.width = (i / n * 100) + '%'; showRes(out, i, i === n && n === 1000000 && current <= 0);
       if (i < n) setTimeout(step, 0); else finish(out, endedAt, quiet, n, t0); };
+    try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'run/' + (current >= 0 ? PRESETS[current][0] : 'own settings').toLowerCase().replace(/[^a-z0-9]+/g, '-'), title: 'RUN: ' + (current >= 0 ? PRESETS[current][0] : 'own settings'), event: true }); } catch (e) { }   /* counts which experiment was run, never the odds */
     setTimeout(step, 30); }
   function stop(silent) { if (running) running.cancel = true; running = null; $('run').disabled = false; $('stop').disabled = true; if (!silent) status('Stopped. ' + describe()); }
   function finish(out, endedAt, quiet, n, t0) { running = null; $('run').disabled = false; $('stop').disabled = true;
